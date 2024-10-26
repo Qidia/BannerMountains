@@ -6,7 +6,7 @@
 }
 
 body {
-  background: #151515;
+  background: #676767;
 }
 
 .banner {
@@ -32,6 +32,55 @@ body {
   border-radius: 20px;
   object-fit: cover;
   filter: saturate(150%) contrast(110%);
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 30%;
+  bottom: 0;
+  width: 110px;
+  z-index: 1;
+}
+
+.axisRectangle::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 48.5%;
+  right: 48.5%;
+  bottom: 0;
+  background: #000000;
+}
+
+.rectangle::after {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  bottom: 40%;
+  background: #000000;
+  right: 40%;
+}
+
+.leftArrow::after {
+  content: "";
+  position: absolute;
+  top: 47%;
+  left: 0%;
+  border-top: 20px solid transparent;
+  border-right: 35px solid #000000;
+  border-bottom: 20px solid transparent;
+}
+
+.rightArrow::after {
+  content: "";
+  position: absolute;
+  top: 47%;
+  right: 0%;
+  border-top: 20px solid transparent;
+  border-left: 35px solid #000000;
+  border-bottom: 20px solid transparent;
 }
 
 .shiftImageMountains {
