@@ -16,6 +16,7 @@ body {
   box-shadow: 0px 0px 14px 3px rgb(0 0 0 / 50%);
   border-radius: 20px;
   overflow: hidden;
+  user-select: none;
 }
 
 .centerOfBlock {
@@ -37,10 +38,11 @@ body {
 .slider {
   position: absolute;
   top: 0;
-  left: 30%;
+  left: 40%;
   bottom: 0;
-  width: 110px;
+  width: 65px;
   z-index: 1;
+  cursor: pointer;
 }
 
 .axisRectangle::after {
@@ -68,9 +70,9 @@ body {
   position: absolute;
   top: 47%;
   left: 0%;
-  border-top: 20px solid transparent;
-  border-right: 35px solid #000000;
-  border-bottom: 20px solid transparent;
+  border-top: 15px solid transparent;
+  border-right: 20px solid #000000;
+  border-bottom: 15px solid transparent;
 }
 
 .rightArrow::after {
@@ -78,9 +80,9 @@ body {
   position: absolute;
   top: 47%;
   right: 0%;
-  border-top: 20px solid transparent;
-  border-left: 35px solid #000000;
-  border-bottom: 20px solid transparent;
+  border-top: 15px solid transparent;
+  border-left: 20px solid #000000;
+  border-bottom: 15px solid transparent;
 }
 
 .shiftImageMountains {
