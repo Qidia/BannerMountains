@@ -1,28 +1,12 @@
-const imgMountains = document.querySelector(".imgMountains");
 const banner = document.querySelector(".banner");
 const slider = document.querySelector(".slider");
+
+const imgMountains = document.querySelector(".imgMountains");
+const shiftImageMountains = document.querySelector(".shiftImageMountains");
+const shiftBannerMountains = document.querySelector(".shiftBannerMountains");
+
 let isDragging = false;
 let sliderPositionPercentage = 0;
-
-function getShiftImage() {
-  imgMountains.classList.add("shiftImageMountains");
-  banner.classList.add("shiftBannerMountains");
-}
-
-function getOriginalImage() {
-  imgMountains.classList.remove("shiftImageMountains");
-  banner.classList.remove("shiftBannerMountains");
-}
-
-banner.addEventListener("mouseover", (event) => {
-  /*   console.log(event.target);
-  console.log(event.currentTarget); */
-  getShiftImage();
-});
-
-banner.addEventListener("mouseout", (event) => {
-  getOriginalImage();
-});
 
 slider.addEventListener("mousedown", (event) => {
   isDragging = true;
@@ -41,8 +25,19 @@ document.addEventListener("mousemove", (event) => {
       newLeft = bannerPosition.width - sliderWidth + sliderWidth / 2;
 
     sliderPositionPercentage = (newLeft / bannerPosition.width) * 100;
-
     slider.style.left = `${sliderPositionPercentage}%`;
+
+    imgMountains.style.clipPath = `inset(0 ${
+      100 -
+      sliderPositionPercentage -
+      ((sliderWidth / 2) * 100) / bannerPosition.width
+    }% 0 0)`;
+    shiftImageMountains.style.clipPath = `inset(0 0 0 ${
+      sliderPositionPercentage + ((sliderWidth / 2) * 100) / bannerPosition.width
+    }%)`;
+    shiftBannerMountains.style.clipPath = `inset(0 0 0 ${
+      sliderPositionPercentage + ((sliderWidth / 2) * 100) / bannerPosition.width
+    }%)`;
   }
 });
 
@@ -58,4 +53,16 @@ window.addEventListener("resize", () => {
   // Пересчитываем позицию слайдера в пикселях на основе процента
   const newLeft = (sliderPositionPercentage / 100) * bannerPosition.width;
   slider.style.left = `${newLeft}px`;
+
+  imgMountains.style.clipPath = `inset(0 ${
+    100 -
+    sliderPositionPercentage -
+    ((sliderWidth / 2) * 100) / bannerPosition.width
+  }% 0 0)`;
+  shiftImageMountains.style.clipPath = `inset(0 0 0 ${
+    sliderPositionPercentage + ((sliderWidth / 2) * 100) / bannerPosition.width
+  }%)`;
+  shiftBannerMountains.style.clipPath = `inset(0 0 0 ${
+    sliderPositionPercentage + ((sliderWidth / 2) * 100) / bannerPosition.width
+  }%)`;
 });
