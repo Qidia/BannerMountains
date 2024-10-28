@@ -1,20 +1,31 @@
-/* :root {
-} */
+:root {
+  --body-color: #676767;
+  --banner-shadow-color: rgba(0, 0, 0, 0.5);
+  --border-radius: 20px;
+  --slider-width: 47px;
+  --pseudoelement-color: #000000;
+  --arrow-size: clamp(
+    5px,
+    2vw,
+    15px
+  ); /* минимальный размер 5px, максимальный - 15px, 2% от ширины экрана */
+}
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background: #676767;
+  background: var(--body-color);
 }
 
+/* Контейнер */
 .banner {
   width: 75%;
   height: 80vh;
   margin: 0 auto;
-  box-shadow: 0px 0px 14px 3px rgb(0 0 0 / 50%);
-  border-radius: 20px;
+  box-shadow: 0px 0px 14px 3px var(--banner-shadow-color);
+  border-radius: var(--border-radius);
   overflow: hidden;
   user-select: none;
 }
@@ -27,81 +38,87 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.imgMountains {
+/* Общие стили изображений */
+.imgMountains,
+.shiftImageMountains {
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   object-fit: cover;
-  filter: saturate(150%) contrast(110%);
-
-  clip-path: inset(0 calc(32% - 32.5px) 0 0);
   position: absolute;
   top: 0;
   left: 0;
+}
+
+/* Изображения */
+.imgMountains {
+  filter: saturate(150%) contrast(110%);
 }
 
 .shiftImageMountains {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   filter: brightness(0.8) contrast(185%) saturate(220%);
-
-  clip-path: inset(0 0 0 calc(32% + 32.5px));
 }
 
+/* Слайдер */
 .slider {
   position: absolute;
   top: 0;
-  left: 32%;
   bottom: 0;
-  width: 65px;
+  width: var(--slider-width);
   z-index: 1;
   cursor: pointer;
 }
 
+/* Псевдоэлемент - вертикальная ось */
 .axisRectangle::after {
   content: "";
   position: absolute;
+  background: var(--pseudoelement-color);
   top: 0;
-  left: 48.5%;
-  right: 48.5%;
   bottom: 0;
-  background: #000000;
+  left: 48.5%;
+  /*   right: 48.5% */
+
+  width: 3%;
 }
 
+/* Псевдоэлемент - прямоугольник */
 .rectangle::after {
   content: "";
   position: absolute;
+  background: var(--pseudoelement-color);
   top: 40%;
-  left: 40%;
   bottom: 40%;
-  background: #000000;
+  left: 40%;
   right: 40%;
 }
 
-.leftArrow::after {
-  content: "";
-  position: absolute;
-  top: 47%;
-  left: 0%;
-  border-top: 15px solid transparent;
-  border-right: 20px solid #000000;
-  border-bottom: 15px solid transparent;
-}
-
+/* Cтрелки */
+.leftArrow::after,
 .rightArrow::after {
   content: "";
   position: absolute;
-  top: 47%;
-  right: 0%;
-  border-top: 15px solid transparent;
-  border-left: 20px solid #000000;
-  border-bottom: 15px solid transparent;
+  /* top: 47%; */
+  top: 50%;
+  /*   border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent; */
+
+  transform: translateY(-50%);
+  border-top: var(--arrow-size) solid transparent;
+  border-bottom: var(--arrow-size) solid transparent;
 }
 
+.leftArrow::after {
+  left: 0%;
+  border-right: calc(var(--arrow-size)) solid var(--pseudoelement-color);
+}
+
+.rightArrow::after {
+  right: 0%;
+  border-left: calc(var(--arrow-size)) solid var(--pseudoelement-color);
+}
+
+/* Стили для градиентного фона */
 .shiftBannerMountains {
   position: absolute;
   top: 0;
@@ -127,7 +144,5 @@ body {
       rgb(242 187 136 / 35%) 46%,
       transparent 63.71%
     );
-
   filter: saturate(188%);
-  clip-path: inset(0 0 0 calc(32% + 32.5px));
 }
