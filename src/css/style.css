@@ -77,8 +77,6 @@ body {
   top: 0;
   bottom: 0;
   left: 48.5%;
-  /*   right: 48.5% */
-
   width: 3%;
 }
 
@@ -98,11 +96,7 @@ body {
 .rightArrow::after {
   content: "";
   position: absolute;
-  /* top: 47%; */
   top: 50%;
-  /*   border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent; */
-
   transform: translateY(-50%);
   border-top: var(--arrow-size) solid transparent;
   border-bottom: var(--arrow-size) solid transparent;
