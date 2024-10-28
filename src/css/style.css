@@ -52,11 +52,11 @@ body {
 
 /* Изображения */
 .imgMountains {
-  filter: saturate(150%) contrast(110%);
+  filter: saturate(110%) contrast(60%);
 }
 
 .shiftImageMountains {
-  filter: brightness(0.8) contrast(185%) saturate(220%);
+  filter: brightness(0.8) contrast(100%) saturate(190%);
 }
 
 /* Слайдер */
